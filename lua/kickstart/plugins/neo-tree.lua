@@ -18,6 +18,9 @@ return {
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          -- colemak-dh
+          ['e'] = 'move_cursor_down',
+          -- ['u'] = 'move_cursor_up',
         },
       },
     },
