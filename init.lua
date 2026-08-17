@@ -645,7 +645,6 @@ if not vim.g.vscode then
         vim.list_extend(ensure_installed, {
           'lua_ls', -- Lua Language server
           'stylua', -- Used to format Lua code
-          'clang-format', -- c++ formatter
           -- You can add other tools here that you want Mason to install
         })
 
@@ -699,6 +698,11 @@ if not vim.g.vscode then
       },
       opts = {
         notify_on_error = false,
+        formatters = {
+          ['clang-format'] = {
+            command = vim.fn.executable '/usr/bin/clang-format' == 1 and '/usr/bin/clang-format' or 'clang-format',
+          },
+        },
         format_on_save = function(bufnr)
           -- Disable "format_on_save lsp_fallback" for languages that don't
           -- have a well standardized coding style. You can add additional
