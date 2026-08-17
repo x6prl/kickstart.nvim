@@ -608,7 +608,17 @@ if not vim.g.vscode then
         --  See `:help lsp-config` for information about keys and how to configure
         local servers = {
           clangd = {
-            cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
+            cmd = {
+              'clangd',
+              '--background-index',
+              '--clang-tidy',
+              -- '--log=verbose',
+              -- CROSS-COMPILATION (Web / Android / Linux):
+              '--query-driver=/**/*clang*,/**/*clang++*,/**/*gcc*,/**/*g++*,/**/*emcc*,/**/*em++*',
+              '--completion-style=detailed',
+              '--header-insertion=iwyu',
+              '--function-arg-placeholders=1',
+            },
             init_options = {
               fallbackFlags = { '-std=c++23' },
             },
