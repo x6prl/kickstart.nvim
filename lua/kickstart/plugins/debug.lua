@@ -163,7 +163,10 @@ return {
         args = { '--port', '${port}' },
       },
     }
-
+    local function split_args(input)
+      -- simple whitespace split; good enough for most flags
+      return vim.fn.split(input, [[\s\+]], true)
+    end
     dap.configurations.cpp = {
       {
         name = 'Launch file',
@@ -171,6 +174,10 @@ return {
         request = 'launch',
         program = function() return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file') end,
         cwd = '${workspaceFolder}',
+        args = function()
+          local line = vim.fn.input 'Args: '
+          return split_args(line)
+        end,
         stopOnEntry = false,
       },
     }
