@@ -154,6 +154,12 @@ vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- vim.opt.listchars = { tab = '| ', trail = '·', nbsp = '␣' }
 
+-- use tabs of 4 spaces
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = false
+
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
 
